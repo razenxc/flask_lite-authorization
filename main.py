@@ -19,6 +19,10 @@ with app.app_context():
     db.create_all()
 # END DATABASE
 
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template("error.html", title="Error 404", error_code=404)
+
 @app.route("/")
 def index():
     return render_template("index.html", title="Welcome")
@@ -35,17 +39,8 @@ def login():
         if not check_auth_data_db:
             flash("Incorrect login or password!", category="error")
         elif check_auth_data_db:
-            print(session)
             session["userLogged"] = request.form["username"]
             return redirect(url_for('index'))
-
-    # if 'userLogged' in session:
-    #     return redirect(url_for('index'))
-    # elif request.method == 'POST' and Users.query.filter_by(username=request.form['username'], password=request.form['password']).first():
-    #     session["userLogged"] = request.form["username"]
-    #     return redirect(url_for('index'))
-    # elif request.method == 'POST' and not Users.query.filter_by(username=request.form['username'], password=request.form['password']).first():
-    #     flash("Incorrect login or password!", category="error")
     return render_template("auth/login.html", title="Login")
 
 @app.route("/register", methods=["POST", "GET"])

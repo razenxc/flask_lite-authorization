@@ -7,12 +7,6 @@
 {% block content %}
 <div class="intro">
     <h1>Welcome {{ session['userLogged'] }}</h1>
-    <div class="auth-options">
-        <a href="{{ url_for('login') }}">Sign In</a>
-        <a href="{{ url_for('register') }}">Sign Up</a>
-        {% if 'userLogged' in session %}
-        <a href="{{ url_for('logout') }}">Logout</a>
-        {% endif %}
-    </div>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta harum non velit voluptas assumenda ullam rem unde consectetur eligendi ab perspiciatis deserunt officia ad nemo voluptatem tempora atque maiores suscipit debitis, nesciunt eos. Maiores veritatis similique voluptatum odit ducimus distinctio dolorum hic ipsam sint. In praesentium ullam error incidunt placeat fuga aliquid consequatur earum dignissimos beatae architecto ratione vero quisquam, possimus tempore rem rerum nam ipsam, explicabo impedit numquam aperiam neque eaque. Voluptatum optio sapiente voluptas sequi, quos iste facere veniam quas. Corrupti voluptates quod ad cumque in aut deserunt, ipsum, qui sit distinctio dolore, maxime obcaecati adipisci quia saepe.</p>
 </div>
 {% endblock %}

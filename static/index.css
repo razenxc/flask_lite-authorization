@@ -16,16 +16,14 @@
 }
 
 .intro > h1 {
+    background-color: rgba(255, 255, 255, 0.435);
+    padding: 0 20px;
     font-size: 50px;
     margin-bottom: 20px;
 }
 
-.auth-options > a {
-    background-color: aliceblue;
-    border: 2px solid black;
-    border-radius: 10px;
-    padding: 10px;
-    text-decoration: none;
-    color: black;
+.intro > p {
+    color: rgb(255, 255, 255);
+    padding: 0 100px;
     font-weight: bold;
 }
