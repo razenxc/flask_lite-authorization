@@ -1,3 +1,4 @@
+import bcrypt
 from flask import Flask, render_template, session, redirect, url_for, request, flash
 
 app = Flask(__name__)
@@ -52,11 +53,11 @@ def login():
     elif request.method == 'POST':
         form_username = request.form["username"]
         form_password = request.form["password"]
-        check_auth_data_db = Users.query.filter_by(username=form_username, password=form_password).first()
+        check_username_db = db.session.query(Users).filter(Users.username == form_username).first()
 
-        if not check_auth_data_db:
+        if not check_username_db or not bcrypt.checkpw(form_password.encode('utf-8'), check_username_db.password.encode('utf-8')):
             flash("Incorrect login or password!", category="error")
-        elif check_auth_data_db:
+        elif check_username_db:
             session["userLogged"] = request.form["username"]
             return redirect(url_for('index'))
     return render_template("auth/login.html", title="Login")
@@ -80,10 +81,11 @@ def register():
                 if form_password != form_rep_password:
                     flash("Password mismatch", category="error")
                 elif form_password == form_rep_password:
+                    hashed_password = bcrypt.hashpw(form_password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
                     db.session.add(Users(
                     username = form_username,
                     email = form_email,
-                    password = form_password
+                    password = hashed_password
                     ))
                     db.session.commit()
                     return redirect(url_for("login"))
