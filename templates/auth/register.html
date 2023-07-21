@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="auth_window">
+    {% for category, message in get_flashed_messages(true) %}
+        <div class="flash {{category}}">{{message}}</div>
+    {% endfor %}
+    <form class="register" action="/register" method="post">
+        <p>Login</p>
+        <input type="text" value="" name="username" required>
+        <p>Email</p>
+        <input type="text" value="" name="email" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}" required>
+        <p>Password</p>
+        <input type="password" value="" name="password" required>
+        <p>Repeat Password</p>
+        <input type="password" value="" name="repeat_password" required>
+        <input type="submit" value="Register">
+    </form>
+    <a href="{{ url_for('login') }}">Alredy have an account? Login now!</a>
+</div>
+{% endblock %}
