@@ -1,7 +1,7 @@
 from flask import Flask, render_template, session, redirect, url_for, request, flash
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "q$1w2e$3r4t_5y6=^u7i8&o9p"
+app.config["SECRET_KEY"] = "dev"
 
 # DATABASE
 from flask_sqlalchemy import SQLAlchemy
