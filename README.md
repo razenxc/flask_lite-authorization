@@ -2,9 +2,13 @@
 <p>Web authorization written on the flask library</p>
 <h2>Installation</h2>
 <ul>
-    <li>pip install -r requirements.txt</li>
+    <li><code>pip install -r requirements.txt</code></li>
+    <li>Create <code>.env</code> file in project directory</li>
+    <li>Gen secret key with <code>python -c "import secrets; print(secrets.token_hex())"</code> in console/terminal and copy it</li>
+    <li>Paste generated secret key in <code>FLASK_SECRET_KEY="paste-here"</code> to <code>.env</code></li>
 </ul>
 <h2>Laucnhing</h2>
 <ul>
-    <li>python main.py</li>
+    <li><code>python main.py</code></li>
 </ul>
+<sup>This is not a production version.*</sup>

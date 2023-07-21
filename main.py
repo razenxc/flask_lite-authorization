@@ -1,8 +1,10 @@
 import bcrypt
+import os
 from flask import Flask, render_template, session, redirect, url_for, request, flash
+from dotenv import load_dotenv; load_dotenv()
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "dev"
+app.config["SECRET_KEY"] = os.getenv("FLASK_SECRET_KEY")
 
 # DATABASE
 from flask_sqlalchemy import SQLAlchemy
