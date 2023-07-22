@@ -15,6 +15,7 @@ db = SQLAlchemy(app)
 class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, unique=True, nullable=False)
+    displayname = db.Column(db.String, nullable=False)
     email = db.Column(db.String, nullable=False)
     password = db.Column(db.String, nullable=False)
 
@@ -53,22 +54,23 @@ def login():
     if 'userLogged' in session:
             return redirect(url_for('index'))
     elif request.method == 'POST':
-        form_username = request.form["username"]
+        form_username = request.form["username"].lower()
         form_password = request.form["password"]
         check_username_db = db.session.query(Users).filter(Users.username == form_username).first()
 
         if not check_username_db or not bcrypt.checkpw(form_password.encode('utf-8'), check_username_db.password.encode('utf-8')):
             flash("Incorrect login or password!", category="error")
         elif check_username_db:
-            session["userLogged"] = request.form["username"]
+            session["userLogged"] = check_username_db.displayname
             return redirect(url_for('index'))
     return render_template("auth/login.html", title="Login")
 
 @app.route("/register", methods=["POST", "GET"])
 def register():
     if request.method == "POST":
-        form_username = request.form["username"]
-        form_email = request.form["email"]
+        form_username = request.form["username"].lower()
+        form_displayname = request.form["displayname"]
+        form_email = request.form["email"].lower()
         form_password = request.form["password"]
         form_rep_password = request.form["repeat_password"]
         check_username_db = db.session.query(Users).filter(Users.username == form_username).first()
@@ -86,6 +88,7 @@ def register():
                     hashed_password = bcrypt.hashpw(form_password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
                     db.session.add(Users(
                     username = form_username,
+                    displayname = form_displayname,
                     email = form_email,
                     password = hashed_password
                     ))
