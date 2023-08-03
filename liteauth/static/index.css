@@ -1,0 +1,29 @@
+* {
+    margin: 0; padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(./images/index/background.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.intro > h1 {
+    background-color: rgba(255, 255, 255, 0.435);
+    padding: 0 20px;
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.intro > p {
+    color: rgb(255, 255, 255);
+    padding: 0 100px;
+    font-weight: bold;
+}

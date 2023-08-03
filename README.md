@@ -9,6 +9,6 @@
 </ul>
 <h2>Laucnhing</h2>
 <ul>
-    <li><code>python main.py</code></li>
+    <li>Development server <code>flask --app liteauth:app run --debug</code></li>
+    <li>Production waitress server <code>waitress-serve --host localhost --call liteauth:app</code></li>
 </ul>
-<sup>This is not a production version.*</sup>

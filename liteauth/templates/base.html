@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Website | {{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    {% block head %} {% endblock %}
+</head>
+<body>
+    <header>
+        <a href="{{ url_for('index') }}">Home</a>
+        {% if 'userLogged' not in session %}
+        <a href="{{ url_for('login') }}">Sign In</a>
+        <a href="{{ url_for('register') }}">Sign Up</a>
+        {% endif %}
+        {% if 'userLogged' in session %}
+        <a href="{{ url_for('logout') }}">Logout</a>
+        {% endif %}
+    </header>
+    {% block content %} {% endblock %}
+</body>
+</html>
