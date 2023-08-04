@@ -53,6 +53,7 @@ def app():
     def index():
         return render_template("index.html", title="Welcome")
 
+    # Authorization
     @app.route("/login", methods=["POST", "GET"])
     def login():
         if 'userLogged' in session:
@@ -65,7 +66,10 @@ def app():
             if not check_username_db or not bcrypt.checkpw(form_password.encode('utf-8'), check_username_db.password.encode('utf-8')):
                 flash("Incorrect login or password!", category="error")
             elif check_username_db:
-                session["userLogged"] = check_username_db.displayname
+                session["userId"] = check_username_db.id
+                session["userDname"] = check_username_db.displayname
+                session["userLogged"] = check_username_db.username
+                session["userEmail"] = check_username_db.email
                 return redirect(url_for('index'))
         return render_template("auth/login.html", title="Login")
 
@@ -99,10 +103,35 @@ def app():
                         db.session.commit()
                         return redirect(url_for("login"))
         return render_template("auth/register.html", title="Registration")
+    
+    # Profile
+    @app.route("/profile")
+    def profile():
+        if "userLogged" not in session:
+            return redirect(url_for("login"))
+        return render_template("profile/profile.html", title=f"{session['userLogged']} profile")
+    
+    @app.route("/change_display_name", methods=["POST"])
+    def change_display_name():
+        if request.method == "POST":
+            flash("Error (/change_display_name)", category="error")
+        return redirect(url_for('profile'))
+
+    @app.route("/change_username", methods=["POST"])
+    def change_username():
+        if request.method == "POST":
+            flash("Error (/change_username)", category="error")
+        return redirect(url_for('profile'))
+    
+    @app.route("/change_email", methods=["POST"])
+    def change_email():
+        if request.method == "POST":
+            flash("Error (/change_email)", category="error")
+        return redirect(url_for('profile'))
 
     @app.route("/logout", methods=["POST", "GET"])
     def logout():
-        session.pop('userLogged')
+        session.pop("userId"); session.pop("userDname"); session.pop("userLogged"); session.pop("userEmail")
         return redirect(url_for('index'))
 
     return app

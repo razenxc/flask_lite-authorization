@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="acc_info">
+        <h1>Hello {{ session['userDname'] }}!</h1>
+        <ul>
+            <h2>Account information</h2>
+            <li>Id: {{ session['userId'] }}</li>
+            <li>Display Name: {{ session['userDname'] }}</li>
+            <li>Username: {{ session['userLogged'] }}</li>
+            <li>Email: {{ session['userEmail'] }}</li>
+        </ul>
+    </div>
+    <div class="acc_settings">
+        {% for category, message in get_flashed_messages(true) %}
+        <div class="flash {{category}}">{{message}}</div>
+        {% endfor %}
+        <form action="/change_display_name" method="POST">
+            <input type="text" name="change_display_name" value="{{ session['userDname'] }}">
+            <input type="submit" value="Change">
+        </form>
+        <form action="/change_username" method="POST">
+            <input type="text" name="change_username" value="{{ session['userLogged'] }}">
+            <input type="submit" value="Change">
+        </form>
+        <form action="/change_email" method="POST">
+            <input type="text" name="change_email" value="{{ session['userEmail'] }}">
+            <input type="submit" value="Change">
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+* {
+    margin: 0; padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-image: url(./images/profile/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+ul {
+    list-style-position: inside;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    background-color: aliceblue;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 100px 100px 0;
+    padding: 15px;
+    color: black;
+    font-weight: bold;
+}
+
+.acc_settings {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+/* Flash */
+.flash {
+    padding: 10px;
+}
+
+.flash.success {
+    border: 2px solid #21DB56;
+    border-radius: 10px;
+    background-color: #AEFFC5;
+}
+
+.flash.error {
+    border: 2px solid #FF4343;
+    border-radius: 10px;
+    background-color: #FF9C9C;
+}
