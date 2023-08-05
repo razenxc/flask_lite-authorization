@@ -1,5 +1,5 @@
 [project]
-name = "lite-authorization"
+name = "liteauth"
 version = "3.1.0"
 description = "Web authorization written on the flask library."
 dependencies = [
