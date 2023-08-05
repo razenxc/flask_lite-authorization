@@ -1,11 +1,3 @@
-<img src="https://img.shields.io/github/stars/razenxc/flask_lite-authorization">
-<img src="https://img.shields.io/github/last-commit/razenxc/flask_lite-authorization
-">
-<img src="https://img.shields.io/github/repo-size/razenxc/flask_lite-authorization">
-<img src="https://img.shields.io/github/languages/code-size/razenxc/flask_lite-authorization
-">
-<img src="https://img.shields.io/github/directory-file-count/razenxc/flask_lite-authorization
-">
 <h1>flask_lite-authorization</h1>
 <p>Web authorization written on the flask library</p>
 <h2>Installation</h2>
