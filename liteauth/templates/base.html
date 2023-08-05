@@ -11,12 +11,12 @@
     <header>
         <a href="{{ url_for('index') }}">Home</a>
         {% if 'userLogged' not in session %}
-        <a href="{{ url_for('login') }}">Sign In</a>
-        <a href="{{ url_for('register') }}">Sign Up</a>
+        <a href="{{ url_for('auth.login') }}">Sign In</a>
+        <a href="{{ url_for('auth.register') }}">Sign Up</a>
         {% endif %}
         {% if 'userLogged' in session %}
-        <a href="{{ url_for('profile') }}">Profile</a>
-        <a href="{{ url_for('logout') }}">Logout</a>
+        <a href="{{ url_for('accountcp.profile') }}">Profile</a>
+        <a href="{{ url_for('accountcp.logout') }}">Logout</a>
         {% endif %}
     </header>
     {% block content %} {% endblock %}
