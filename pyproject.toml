@@ -1,0 +1,15 @@
+[project]
+name = "lite-authorization"
+version = "3.1.0"
+description = "Web authorization written on the flask library."
+dependencies = [
+    "flask",
+    "flask_sqlalchemy",
+    "bcrypt",
+    "python-dotenv",
+    "waitress"
+]
+
+[build-system]
+requires = ["flit_core<4"]
+build-backend = "flit_core.buildapi"
