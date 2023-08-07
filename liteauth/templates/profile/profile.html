@@ -20,16 +20,16 @@
         {% for category, message in get_flashed_messages(true) %}
         <div class="flash {{category}}">{{message}}</div>
         {% endfor %}
-        <form action="/change_display_name" method="POST">
-            <input type="text" name="change_display_name" value="{{ session['userDname'] }}">
+        <form method="POST">
+            <input type="text" name="display_name" value="{{ session['userDname'] }}">
             <input type="submit" value="Change">
         </form>
-        <form action="/change_username" method="POST">
-            <input type="text" name="change_username" value="{{ session['userLogged'] }}">
+        <form method="POST">
+            <input type="text" name="username" value="{{ session['userLogged'] }}">
             <input type="submit" value="Change">
         </form>
-        <form action="/change_email" method="POST">
-            <input type="text" name="change_email" value="{{ session['userEmail'] }}">
+        <form method="POST">
+            <input type="text" name="email" value="{{ session['userEmail'] }}">
             <input type="submit" value="Change">
         </form>
     </div>
