@@ -16,4 +16,10 @@ header > a {
     text-decoration: none;
     color: black;
     font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header > a:hover {
+    background-color: black;
+    color: white;
 }

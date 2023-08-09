@@ -12,9 +12,9 @@ def app():
     )
 
     # register blueprints
-    from . import auth, accountcp
+    from . import auth, account
     app.register_blueprint(auth.bp)
-    app.register_blueprint(accountcp.bp)
+    app.register_blueprint(account.bp)
 
     # INIT DATABASE
     db.init_app(app)

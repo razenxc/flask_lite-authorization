@@ -21,14 +21,17 @@
         <div class="flash {{category}}">{{message}}</div>
         {% endfor %}
         <form method="POST">
+            <p>Change display name</p>
             <input type="text" name="display_name" value="{{ session['userDname'] }}">
             <input type="submit" value="Change">
         </form>
         <form method="POST">
+            <p>Change username</p>
             <input type="text" name="username" value="{{ session['userLogged'] }}">
             <input type="submit" value="Change">
         </form>
         <form method="POST">
+            <p>Change email</p>
             <input type="text" name="email" value="{{ session['userEmail'] }}">
             <input type="submit" value="Change">
         </form>

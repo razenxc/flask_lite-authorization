@@ -37,4 +37,5 @@
 <ul>
     <li>Development server <code>flask --app liteauth:app run --debug</code></li>
     <li>Production waitress server <code>waitress-serve --host localhost --call liteauth:app</code></li>
+    <li>* Also you can use <code>launch.bat</code> if you on windows, enter in your terminal <code>launch</code> and it output launch parameters</li>
 </ul>

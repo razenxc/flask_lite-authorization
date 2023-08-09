@@ -11,14 +11,14 @@ def login():
     elif request.method == 'POST':
         form_username = request.form["username"].lower()
         form_password = request.form["password"]
-        check_username_db = db.session.query(Users).filter(Users.username == form_username).first()
-        if not check_username_db or not bcrypt.checkpw(form_password.encode('utf-8'), check_username_db.password.encode('utf-8')):
+        current_user = db.session.query(Users).filter(Users.username == form_username).first()
+        if not current_user or not bcrypt.checkpw(form_password.encode('utf-8'), current_user.password.encode('utf-8')):
             flash("Incorrect login or password!", category="error")
-        elif check_username_db:
-            session["userId"] = check_username_db.id
-            session["userDname"] = check_username_db.displayname
-            session["userLogged"] = check_username_db.username
-            session["userEmail"] = check_username_db.email
+        elif current_user:
+            session["userId"] = current_user.id
+            session["userDname"] = current_user.displayname
+            session["userLogged"] = current_user.username
+            session["userEmail"] = current_user.email
             return redirect(url_for("index"))
     return render_template("auth/login.html", title="Login")
 
@@ -30,12 +30,12 @@ def register():
         form_email = request.form["email"].lower()
         form_password = request.form["password"]
         form_rep_password = request.form["repeat_password"]
-        check_username_db = db.session.query(Users).filter(Users.username == form_username).first()
+        current_user = db.session.query(Users).filter(Users.username == form_username).first()
         check_email_db = db.session.query(Users).filter(Users.email == form_email).first()
 
-        if check_username_db:
+        if current_user:
             flash("This user is already registered!", category="error")
-        elif not check_username_db:
+        elif not current_user:
             if check_email_db:
                 flash("This email is alredy registred!", category="error")
             elif not check_email_db:

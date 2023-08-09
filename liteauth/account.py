@@ -2,12 +2,12 @@ import bcrypt
 from flask import Flask, render_template, redirect, url_for, request, session, flash, Blueprint
 from dbmodels import Users, db
 
-bp = Blueprint("accountcp", __name__, url_prefix="/account")
+bp = Blueprint("account", __name__, url_prefix="/account")
 
 @bp.route("/profile", methods=["POST", "GET"])
 def profile():
     if "userLogged" not in session:
-        return redirect(url_for("login"))
+        return redirect(url_for("auth.login"))
     
     current_user = db.session.query(Users).filter(Users.username == session["userLogged"]).first()
 
@@ -20,17 +20,17 @@ def profile():
             # Change account username
             elif "username" in request.form:
                 if db.session.query(Users).filter(Users.username == request.form["username"]).first():
-                    flash("This username is already occupied")
+                    flash("This username is already occupied", category="error")
                 else:
                     current_user.username = request.form["username"]
             # Change account email
             elif "email" in request.form:
                 if db.session.query(Users).filter(Users.email == request.form["email"]).first():
-                     flash("This email is already used")
+                     flash("This email is already used", category="error")
                 else:
                     current_user.email = request.form["email"]
         except Exception as error:
-            flash(f"An error occurred while writing to the database: {error}")
+            flash(f"An error occurred while writing to the database: {error}", category="error")
         else:
             db.session.commit()
             # If the change in the database was successful, then use the new values in the session

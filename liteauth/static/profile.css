@@ -4,7 +4,7 @@
 }
 
 body {
-    background-image: url(./images/profile/background.jpg);
+    background-image: url(./images/profile/background.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -15,6 +15,7 @@ ul {
 
 .content {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     background-color: aliceblue;
     border: 2px solid black;
@@ -29,6 +30,38 @@ ul {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+}
+
+.acc_settings > form {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.acc_settings > form > p {
+    padding-right: 10px;
+}
+
+.acc_settings > form > input {
+    background-color: aliceblue;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.acc_settings > form > input[type="text"] {
+    width: 195px;
+    padding-left: 5px;
+    margin-right: 10px;
+}
+
+.acc_settings > form > input[type="submit"] {
+    width: 100px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.acc_settings > form > input[type="submit"]:hover {
+    background-color: black;
+    color: white;
 }
 
 /* Flash */

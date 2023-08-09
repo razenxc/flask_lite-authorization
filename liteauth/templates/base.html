@@ -15,8 +15,8 @@
         <a href="{{ url_for('auth.register') }}">Sign Up</a>
         {% endif %}
         {% if 'userLogged' in session %}
-        <a href="{{ url_for('accountcp.profile') }}">Profile</a>
-        <a href="{{ url_for('accountcp.logout') }}">Logout</a>
+        <a href="{{ url_for('account.profile') }}">Profile</a>
+        <a href="{{ url_for('account.logout') }}">Logout</a>
         {% endif %}
     </header>
     {% block content %} {% endblock %}
