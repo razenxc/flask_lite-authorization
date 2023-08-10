@@ -1,7 +1,7 @@
 import os
 from flask import Flask, render_template
 from dotenv import load_dotenv; load_dotenv()
-from dbmodels import db
+from .dbmodels import db
 
 def app():
     # create and configure the app
