@@ -8,7 +8,7 @@ def app():
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY = os.getenv("FLASK_SECRET_KEY"),
-        SQLALCHEMY_DATABASE_URI = "sqlite:///database.sqlite"
+        SQLALCHEMY_DATABASE_URI = os.getenv("SQLALCHEMY_DB_URI")
     )
 
     # register blueprints

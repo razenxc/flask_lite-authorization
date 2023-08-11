@@ -1,5 +1,0 @@
-flask
-flask_sqlalchemy
-bcrypt
-python-dotenv
-waitress
